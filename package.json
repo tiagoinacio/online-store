@@ -38,6 +38,9 @@
     "webpack-merge": "^4.1.0"
   },
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
+    "build": "webpack --env production",
+    "lint": "eslint app/ webpack.*.js --cache --format node_modules/eslint-friendly-formatter file1 file2 dir1/ dir2/",
+    "lint:style": "stylelint app/**/*.css"
   }
 }
