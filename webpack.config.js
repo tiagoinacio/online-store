@@ -13,7 +13,7 @@ const common = merge([
     {
         bail: true,
         entry: {
-            app: paths.app
+            app: paths.app + '/app.js'
         },
         output: {
             path: paths.build,
@@ -21,7 +21,7 @@ const common = merge([
         },
         plugins: [
             new HtmlWebpackPlugin({
-                template: './app/index.html',
+                template: 'app/index.html',
                 filename: 'index.html',
                 inject: 'body'
             })
@@ -31,7 +31,12 @@ const common = merge([
         include: paths.app
     }),
     parts.lintCSS({ include: paths.app }),
-    parts.transpile()
+    parts.transpile(),
+    parts.loadFonts({
+        options: {
+            name: '[name].[ext]'
+        }
+    })
 ]);
 
 const production = merge([
@@ -40,6 +45,12 @@ const production = merge([
     }),
     parts.purifyCSS({
         paths: glob.sync(`${paths.app}/**/*.js`, { nodir: true }),
+    }),
+    parts.loadImages({
+        options: {
+            limit: 15000,
+            name: '[name].[ext]'
+        }
     })
 ]);
 
@@ -48,7 +59,8 @@ const development = merge([
         host: '127.0.0.1', //process.env.HOST, // Defaults to `localhost`
         port: '8080' // process.env.PORT // Defaults to 8080
     }),
-    parts.loadCSS()
+    parts.loadCSS(),
+    parts.loadImages()
 ]);
 
 module.exports = (env) => {
@@ -58,28 +70,3 @@ module.exports = (env) => {
 
     return merge(common, development);
 };
-
-// module.exports = {
-//     entry: './app',
-//     output: {
-//         path: path.resolve('dist'),
-//         filename: 'app.js'
-//     },
-//     module: {
-//         loaders: [
-//             {
-//                 test: /\.js$/,
-//                 loader: 'babel-loader',
-//                 exclude: /node_modules/
-//             },
-//             {
-//                 test: /\.jsx$/,
-//                 loader: 'babel-loader',
-//                 exclude: /node_modules/
-//             }
-//         ]
-//     },
-//     plugins: [
-//         HtmlWebpackPluginConfig,
-//     ]
-// }

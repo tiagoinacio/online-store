@@ -63,10 +63,10 @@ module.exports.loadCSS = ({ include, exclude } = {}) => ({
                 use: [
                     'style-loader',
                     {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true
-                        }
+                        loader: 'css-loader'
+                        // options: {
+                        //     modules: true
+                        // }
                     },
                     {
                         loader: 'postcss-loader',
@@ -84,7 +84,7 @@ module.exports.loadCSS = ({ include, exclude } = {}) => ({
     }
 });
 
-exports.autoprefix = () => ({
+module.exports.autoprefix = () => ({
     loader: 'postcss-loader',
     options: {
         plugins: () => ([
@@ -93,13 +93,13 @@ exports.autoprefix = () => ({
     }
 });
 
-exports.purifyCSS = ({ paths }) => ({
+module.exports.purifyCSS = ({ paths }) => ({
     plugins: [
         new PurifyCSSPlugin({ paths })
     ]
 });
 
-exports.lintCSS = ({ include, exclude }) => ({
+module.exports.lintCSS = ({ include, exclude }) => ({
   module: {
     rules: [
       {
@@ -126,13 +126,46 @@ module.exports.transpile = () => ({
         rules: [
             {
                 test: /\.js$/,
-                use: 'babel-loader',
+                loader: 'babel-loader',
                 exclude: /node_modules/
             },
             {
                 test: /\.jsx$/,
-                use: 'babel-loader',
+                loader: 'babel-loader',
                 exclude: /node_modules/
+            }
+        ]
+    }
+});
+
+module.exports.loadImages = ({ include, exclude, options } = {}) => ({
+    module: {
+        rules: [
+            {
+                test: /\.(png|jpg|svg)$/,
+                include,
+                exclude,
+                use: {
+                    loader: 'url-loader',
+                    options
+                }
+            }
+        ]
+    }
+});
+
+module.exports.loadFonts = ({ include, exclude, options } = {}) => ({
+    module: {
+        rules: [
+            {
+                // Capture eot, ttf, woff, and woff2
+                test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+                include,
+                exclude,
+                use: {
+                    loader: 'file-loader',
+                    options
+                }
             }
         ]
     }
