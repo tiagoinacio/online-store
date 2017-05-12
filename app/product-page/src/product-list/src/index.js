@@ -7,7 +7,7 @@ export class ProductList extends React.Component {
                 <li className="product-list__item">
                     <article className="product" itemScope itemType="http://schema.org/Product">
                         <figure className="product__image-wrapper">
-                            <img className="product__image" src={require("../../assets/images/img01.png")} alt="Product" itemProp="image" />
+                            <img className="product__image" src={require("../../../../assets/images/img01.png")} alt="Product" itemProp="image" />
                             <button className="product__wishlist-button button button--round button--wishlist">
                                 <svg className="icon" width="20px" height="20px" viewBox="0 6 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                     <title>Wishlist Icon</title>
@@ -29,7 +29,7 @@ export class ProductList extends React.Component {
                 <li className="product-list__item">
                     <article className="product" itemScope itemType="http://schema.org/Product">
                         <figure className="product__image-wrapper">
-                            <img className="product__image" src={require("../../assets/images/img01.png")} alt="Product" itemProp="image" />
+                            <img className="product__image" src={require("../../../../assets/images/img01.png")} alt="Product" itemProp="image" />
                             <button className="product__wishlist-button button button--round button--wishlist">
                                 <svg className="icon" width="20px" height="20px" viewBox="0 6 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                     <title>Wishlist Icon</title>
