@@ -6,11 +6,13 @@ module.exports = {
         node: true,
     },
     extends: 'eslint:recommended',
+    parser: "babel-eslint",
     parserOptions: {
         sourceType: 'module',
     },
     ecmaFeatures: {
-        modules: true
+        modules: true,
+        jsx: true
     },
     rules: {
         indent: [2, 4],
@@ -20,4 +22,9 @@ module.exports = {
         'no-unused-vars': [2],
         'no-console': 0,
     },
+    plugins: ['react'],
+    rules: {
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error"
+    }
 };
