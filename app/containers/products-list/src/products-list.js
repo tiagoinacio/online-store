@@ -6,6 +6,8 @@ import configuration from '../../../config.json';
 import { addToCart, addToWishlist } from '../../../actions';
 import { Product } from '../../../components/product';
 
+import './products-list.scss';
+
 class ProductsListContainer extends React.Component {
 
     isProductInCart(productId) {
