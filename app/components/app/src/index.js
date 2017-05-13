@@ -1,17 +1,18 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import { render } from 'react-dom';
 
-import './app.css';
+import configuration from './config.json';
 
 import { Header } from './header';
 import { ProductPage } from './product-page';
 import { Footer } from './footer';
+import { Store } from './store';
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                <Header />
+                <Header title={configuration.pageTitle} cart={Store.cart} wishlist={Store.wishlist}/>
                 <ProductPage />
                 <Footer />
             </div>
@@ -19,7 +20,7 @@ class App extends React.Component {
     }
 }
 
-ReactDom.render(
+render(
     <App />,
     document.getElementById('app')
 );

@@ -1,0 +1,16 @@
+.pagination {
+    &__link {
+        cursor: pointer;
+
+        &--disabled {
+            cursor: auto;
+            text-decoration: none;
+        }
+
+        &--selected {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+    
+}

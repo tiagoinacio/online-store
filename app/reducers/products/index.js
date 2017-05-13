@@ -1,0 +1,1 @@
+export { ProductsReducer } from './src/products';

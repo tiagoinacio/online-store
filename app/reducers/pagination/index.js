@@ -1,0 +1,1 @@
+export { PaginationReducer } from './src/pagination';
