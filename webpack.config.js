@@ -13,7 +13,7 @@ const common = merge([
     {
         bail: true,
         entry: {
-            app: paths.app + '/app.js'
+            app: paths.app
         },
         output: {
             path: paths.build,
@@ -27,9 +27,6 @@ const common = merge([
             })
         ]
     },
-    parts.lintJavaScript({
-        include: paths.app
-    }),
     parts.lintCSS({ include: paths.app }),
     parts.transpile(),
     parts.loadFonts({
@@ -45,6 +42,9 @@ const production = merge([
     }),
     parts.purifyCSS({
         paths: glob.sync(`${paths.app}/**/*.js`, { nodir: true }),
+    }),
+    parts.lintJavaScript({
+        include: paths.app
     }),
     parts.loadImages({
         options: {

@@ -57,16 +57,13 @@ module.exports.loadCSS = ({ include, exclude } = {}) => ({
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /\.(css|scss)$/,
                 include,
                 exclude,
                 use: [
                     'style-loader',
                     {
                         loader: 'css-loader'
-                        // options: {
-                        //     modules: true
-                        // }
                     },
                     {
                         loader: 'postcss-loader',
