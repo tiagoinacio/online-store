@@ -1,15 +1,12 @@
-import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
-import { Header } from '../../header';
-import { ProductsList } from '../../products-list';
-import { Pagination } from '../../pagination';
-import { Footer } from '../../../components/footer';
-import configuration from '../../../config.json';
-
+import React            from 'react';
 
 import './app.css';
+
+import { Header }       from '../../header';
+import { ProductsList } from '../../products-list';
+import { Pagination }   from '../../pagination';
+import { Footer }       from '../../../components/footer';
+import configuration    from '../../../config.json';
 
 export class App extends React.Component {
     render() {

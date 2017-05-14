@@ -1,19 +1,23 @@
-import React from 'react';
+import React                  from 'react';
+import PropTypes              from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { connect }            from 'react-redux';
 
+import SVGInline from 'react-svg-inline';
+import arrowLeftIcon from '../../../assets/svg/arrow-left.svg';
+import arrowRightIcon from '../../../assets/svg/arrow-right.svg';
 import './pagination.scss';
 
 import configuration from '../../../config.json';
 import { nextPage, previousPage, goToPage } from '../../../actions';
+import { PaginationItem } from '../../../components/pagination-item';
 
 class PaginationContainer extends React.Component {
 
     getMaxNumberOfPages() {
         return this.props.products.length / configuration.productsPerPage;
     }
-    
+
     previousPage() {
         if (this.props.pagination.currentPage > 1) {
             return this.props.previousPage();
@@ -26,16 +30,14 @@ class PaginationContainer extends React.Component {
         }
     }
 
-    getListOfNumberedPages() {
-        const maxNumberOfPages = this.getMaxNumberOfPages();
-
+    getListOfNumberedPages(maxNumberOfPages) {
         return Array
             .from(Array(maxNumberOfPages).keys())
             .filter((index) => {
                 const diff = maxNumberOfPages - this.props.pagination.currentPage;
                 const maxValue = this.props.pagination.currentPage + 3;
                 const minValue = diff > 4
-                    ? 
+                    ?
                     this.props.pagination.currentPage
                     :
                     maxNumberOfPages - 4;
@@ -61,44 +63,53 @@ class PaginationContainer extends React.Component {
             });
     }
 
-    getGappedDots() {
-        if (this.props.pagination.currentPage < (this.getMaxNumberOfPages() - 3)) {
-            return <li className="pagination__item">
-                <a className="pagination__link pagination__link--disabled">
-                    ...
-                </a>
-            </li>;
+    getLastPageClassName(maxNumberOfPages) {
+        if (this.props.pagination.currentPage === maxNumberOfPages) {
+            return 'pagination__link pagination__link--selected';
+        }
+        return 'pagination__link';
+    }
+
+    getGappedDots(maxNumberOfPages) {
+        if (this.props.pagination.currentPage < (maxNumberOfPages - 3)) {
+            return <PaginationItem isDisabled={true} label='...'/>;
         }
     }
 
+    getLastPageNumber(maxNumberOfPages) {
+        return (
+            <li className="pagination__item">
+                <a onClick={() => this.props.goToPage(maxNumberOfPages)} className={this.getLastPageClassName(maxNumberOfPages)}>
+                {maxNumberOfPages}
+                </a>
+            </li>
+        );
+    }
+
     render() {
+        const maxNumberOfPages = this.getMaxNumberOfPages();
+
         return (
             <nav className="pagination">
                     <ul className="pagination__list">
-                        <li className="pagination__item">
-                            <a onClick={() => this.previousPage()} className="pagination__link">
-                                <svg className="icon" width="8px" height="10px" viewBox="18 18 8 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                                    <title>Arrow Left</title>
-                                    <polygon id="Left-Icon" stroke="none" fillRule="evenodd" transform="translate(22.027061, 23.000000) scale(-1, 1) translate(-22.027061, -23.000000) " points="22.9427745 22.9999999 19 26.9458774 20.0541226 28 25.0541226 23 20.0541226 18 19 19.0541226"></polygon>
-                                </svg>
-                            </a>
-                        </li>
-                        {this.getListOfNumberedPages()}
-                        {this.getGappedDots()}
-                        {this.getMaxNumberOfPages()}
-                        <li className="pagination__item">
-                            <a onClick={() => this.nextPage()} className="pagination__link">
-                                <svg className="icon" width="8px" height="10px" viewBox="18 18 8 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                                    <title>Arrow Right</title>
-                                    <polygon id="Left-Iocn" stroke="none" fillRule="evenodd" points="22.9427745 22.9999999 19 26.9458774 20.0541226 28 25.0541226 23 20.0541226 18 19 19.0541226"></polygon>
-                                </svg>
-                            </a>
-                        </li>
+                        <PaginationItem svg={arrowLeftIcon} onItemClick={this.previousPage.bind(this)}/>
+                        {this.getListOfNumberedPages(maxNumberOfPages)}
+                        {this.getGappedDots(maxNumberOfPages)}
+                        {this.getLastPageNumber(maxNumberOfPages)}
+                        <PaginationItem svg={arrowRightIcon} onItemClick={this.nextPage.bind(this)}/>
                     </ul>
                 </nav>
         );
     }
 }
+
+PaginationContainer.propTypes = {
+    products: PropTypes.array.isRequired,
+    pagination: PropTypes.object.isRequired,
+    nextPage: PropTypes.func.isRequired,
+    previousPage: PropTypes.func.isRequired,
+    goToPage: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => (
     {
@@ -108,11 +119,11 @@ const mapStateToProps = state => (
 );
 
 const matchDispatchToProps = dispatch => bindActionCreators(
-    { 
+    {
         nextPage,
         previousPage,
         goToPage
-    }, 
+    },
     dispatch
 );
 

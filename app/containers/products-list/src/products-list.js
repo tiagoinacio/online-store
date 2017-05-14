@@ -1,10 +1,11 @@
-import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React                        from 'react';
+import PropTypes                    from 'prop-types';
+import { bindActionCreators }       from 'redux';
+import { connect }                  from 'react-redux';
 
-import configuration from '../../../config.json';
+import configuration                from '../../../config.json';
 import { addToCart, addToWishlist } from '../../../actions';
-import { Product } from '../../../components/product';
+import { Product }                  from '../../../components/product';
 
 import './products-list.scss';
 
@@ -25,7 +26,7 @@ class ProductsListContainer extends React.Component {
             .filter((_, index) => index < maxRange && index >= (maxRange - 6))
             .map(product => (
                 <li key={product.id} className="product-list__item">
-                    <Product product={product} 
+                    <Product product={product}
                         isProductInCart={this.isProductInCart(product.id)}
                         isProductInWishlist={this.isProductInWishlist(product.id)}
                         onAddToCartClick={this.props.addToCart}
@@ -43,8 +44,17 @@ class ProductsListContainer extends React.Component {
     }
 }
 
+ProductsListContainer.propTypes = {
+    products: PropTypes.array.isRequired,
+    pagination: PropTypes.object.isRequired,
+    productsInCart: PropTypes.array.isRequired,
+    productsInWishlist: PropTypes.array.isRequired,
+    addToCart: PropTypes.func.isRequired,
+    addToWishlist: PropTypes.func.isRequired
+};
+
 const mapStateToProps = state => (
-    { 
+    {
         products: state.products,
         pagination: state.pagination,
         productsInCart: state.cart.products,
@@ -52,10 +62,10 @@ const mapStateToProps = state => (
     }
 );
 const matchDispatchToProps = dispatch => bindActionCreators(
-    { 
+    {
         addToCart,
         addToWishlist
-    }, 
+    },
     dispatch
 );
 
