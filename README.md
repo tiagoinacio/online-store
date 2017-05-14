@@ -57,3 +57,23 @@ or
 `yarn start`
 
 using **yarn**.
+
+## Lint
+
+To launch the **lint** task you can run:
+
+`npm run lint`
+
+or
+
+`yarn run lint`
+
+## Tests
+
+To launch **unit tests**, you can run:
+
+`npm test`
+
+or
+
+`yarn test``
