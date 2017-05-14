@@ -1,0 +1,1 @@
+export { ProductPrice } from './src/product-price';

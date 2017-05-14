@@ -1,5 +1,5 @@
 $btn-wishlist-active-color: #444A59;
-
+$btn-wishlist-normal-color: #D9D9D9;
 .product {
     display: flex;
     flex-direction: column;
@@ -75,14 +75,15 @@ $btn-wishlist-active-color: #444A59;
         right: 10px;
 
         outline: none;
-
-        &:hover, &--active {
-            &>.icon {
-                fill: $btn-wishlist-active-color;
-            }
-        }
+        fill: $btn-wishlist-normal-color;
 
         &--active {
+            border: 1px solid $btn-wishlist-normal-color;
+            fill: $btn-wishlist-active-color;
+        }
+
+        &:hover {
+            fill: $btn-wishlist-active-color;
             border: 1px solid $btn-wishlist-active-color;
         }
     }

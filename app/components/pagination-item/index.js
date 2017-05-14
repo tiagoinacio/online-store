@@ -1,0 +1,1 @@
+export { PaginationItem } from './src/pagination-item';
