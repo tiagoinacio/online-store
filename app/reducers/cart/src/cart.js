@@ -18,18 +18,19 @@ const defaultState = {
  */
 const addToCart = (state, action) => {
     const index = state.products.findIndex((id) => id === action.payload.id);
+    const price = action.payload.priceDiscounted ? action.payload.priceDiscounted : action.payload.price;
 
     if (index === -1) {
         // add to cart
         return {
-            total: state.total + Number(action.payload.price),
+            total: state.total + Number(price),
             products: state.products.concat(action.payload.id)
         };
     }
 
     // remove from cart
     return {
-        total: state.total - Number(action.payload.price),
+        total: state.total - Number(price),
         products: state.products.filter((product) => product !== state.products[index])
     };
 }
