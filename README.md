@@ -23,11 +23,11 @@ If not, you can grab a binary distribution from their website [here](https://nod
 
 To install the project dependencies using **NPM** (the node package manager), you can run:
 
-`$ npm install` 
+`$ npm install`
 
 or use the shorter version
 
-`$ npm i` 
+`$ npm i`
 
 If you **Yarn** [installed](https://yarnpkg.com/lang/en/docs/install/), you can instead run:
 
@@ -38,7 +38,7 @@ If you **Yarn** [installed](https://yarnpkg.com/lang/en/docs/install/), you can 
 ## Build
 To build the project you can run:
 
-`$ npm run build` 
+`$ npm run build`
 
 If you **Yarn** [installed](https://yarnpkg.com/lang/en/docs/install/), you can instead run:
 
@@ -52,7 +52,7 @@ To launch a local server, you can run:
 
 `npm start`
 
-or 
+or
 
 `yarn start`
 
@@ -77,3 +77,13 @@ To launch **unit tests**, you can run:
 or
 
 `yarn test`
+
+# TODO
+
+[ ] achieve 100% coverage in unit tests
+
+[ ] increase pagination item numbers in mobile
+
+[ ] minify html
+
+[ ] pagination component should be independent from the business logic, it should not be attached to the products list
