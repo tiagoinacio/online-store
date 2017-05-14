@@ -1,7 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Product Price component
+ * @name ProductPrice
+ * @function
+ *
+ * @extends {React.Component}
+ */
 export class ProductPrice extends React.Component {
+    /**
+     * renders the Product Price section
+     *
+     * @name render
+     * @function
+     * @returns {ReactElement} markup
+     */
     render() {
         if (this.props.priceDiscounted) {
             return (

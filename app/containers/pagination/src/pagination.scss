@@ -17,7 +17,7 @@
             text-decoration: none;
         }
 
-        &--selected {
+        &--active {
             font-weight: bold;
             text-decoration: underline;
         }
@@ -31,7 +31,7 @@
             fill: #444A59;
         }
     }
-    
+
     &__list {
         height: 100%;
         display: inline-flex;
@@ -46,5 +46,5 @@
         font-size: 13px;
         letter-spacing: 1.39px;
         text-align: center;
-    }   
+    }
 }

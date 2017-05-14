@@ -8,7 +8,22 @@ import { Pagination }   from '../../pagination';
 import { Footer }       from '../../../components/footer';
 import configuration    from '../../../config.json';
 
+/**
+ * App Class that renders all the components of the application
+ * @name App
+ * @function
+ *
+ * @extends {React}
+ */
 export class App extends React.Component {
+
+    /**
+     * Renders all the application components
+     *
+     * @name render
+     * @function
+     * @returns {ReactElement} markup
+     */
     render() {
         return (
             <div>

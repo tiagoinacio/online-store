@@ -1,23 +1,35 @@
 import React from 'react';
-import SVGInline from 'react-svg-inline';
 import PropTypes from 'prop-types';
 
 import { ProductImage } from '../../product-image';
 import { ProductDetails } from '../../product-details';
-import wishlistIcon from '../../../assets/svg/wishlist.svg';
 import './product.scss';
 
+/**
+ * Product component
+ * @name Product
+ * @function
+ *
+ * @extends {React.Component}
+ */
 export class Product extends React.Component {
+    /**
+     * renders the Product section
+     *
+     * @name render
+     * @function
+     * @returns {ReactElement} markup
+     */
     render() {
         return (
             <article className="product" itemScope itemType="http://schema.org/Product">
-                <ProductImage 
+                <ProductImage
                     src={require('../../../assets/images/img01.png')}
                     onAddToWishlistClick={this.props.onAddToWishlistClick}
                     productId={this.props.product.id}
                     isProductInWishlist={this.props.isProductInWishlist}
                 />
-                <ProductDetails 
+                <ProductDetails
                     product={this.props.product}
                     onAddToCartClick={this.props.onAddToCartClick}
                     isProductInCart={this.props.isProductInCart}
