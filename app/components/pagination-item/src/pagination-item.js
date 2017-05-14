@@ -37,7 +37,7 @@ export class PaginationItem extends React.Component {
 
 PaginationItem.propTypes = {
     isDisabled: PropTypes.bool,
-    label: PropTypes.any.isRequired,
+    label: PropTypes.string,
     onClick: PropTypes.func,
     svg: PropTypes.any
 };
