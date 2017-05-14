@@ -76,4 +76,4 @@ To launch **unit tests**, you can run:
 
 or
 
-`yarn test``
+`yarn test`
