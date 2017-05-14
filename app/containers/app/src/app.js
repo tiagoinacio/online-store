@@ -1,6 +1,6 @@
 import React            from 'react';
 
-import './app.css';
+import './app.scss';
 
 import { Header }       from '../../header';
 import { ProductsList } from '../../products-list';

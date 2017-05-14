@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Fonts
-   ========================================================================== */
+@import '../../../assets/colors/colors.scss';
 
 @font-face{
     font-family: 'Lato-Bold';
@@ -22,9 +20,6 @@
     src: url('../../../assets/font/Lato-Regular.ttf') format('ttf');
 }
 
-/* ==========================================================================
-   Main Styles
-   ========================================================================== */
 html {
     height: 100%;
 }
@@ -44,8 +39,8 @@ body {
     -moz-osx-font-smoothing: grayscale;  /* Font smoothing tweaks for MacOSx in Gecko */
     -webkit-font-smoothing: antialiased;
 
-    color: #444A59;
-    background-color: #F8F8F8;
+    color: $body-fg-color;
+    background-color: $body-bg-color;
 }
 
 * {
@@ -84,7 +79,7 @@ footer {
     align-items: center;
 
     text-transform: uppercase;
-    background-color: #FFFFFF;
+    background-color: $color-white;
 }
 
 main {
@@ -108,12 +103,12 @@ main {
 .icon {
     width: 20px;
     height: 20px;
-    fill: #D9D9D9;
+    fill: $color-grey-light;
     transition: .3s fill;
 }
 
 .button {
-    border: 1px solid #D9D9D9;
+    border: 1px solid $color-grey-light;
     border-radius: 100px;
     background-color: #FFFFFF;
 
@@ -136,7 +131,7 @@ main {
 }
 
 .button--primary:hover {
-    border: 1px solid #444A59;
+    border: 1px solid $btn-primary-bg-color;
     color: #FFFFFF;
     background-color: #444A59;
 }

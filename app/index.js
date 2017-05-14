@@ -8,9 +8,10 @@ import { App } from './containers/app'
 
 const store = createStore(reducers);
 
+
 render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('app')
-)
+);
