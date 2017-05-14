@@ -4,11 +4,12 @@ module.exports = {
         commonjs: true,
         es6: true,
         node: true,
+        "jest/globals": true
     },
     extends: 'eslint:recommended',
     parser: "babel-eslint",
     parserOptions: {
-        sourceType: 'module',
+        sourceType: 'module'
     },
     ecmaFeatures: {
         modules: true,
@@ -20,9 +21,9 @@ module.exports = {
         quotes: [2, 'single'],
         semi: [2, 'always'],
         'no-unused-vars': [2],
-        'no-console': 0,
+        'no-console': 0
     },
-    plugins: ['react'],
+    plugins: ['react', 'jest'],
     rules: {
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error"
