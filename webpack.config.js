@@ -26,13 +26,18 @@ const common = merge([
         },
         output: {
             path: paths.build,
-            filename: '[name].js'
+            filename: '[name].[hash].js'
         },
         plugins: [
             new HtmlWebpackPlugin({
                 template: 'app/index.html',
                 filename: 'index.html',
-                inject: 'body'
+                inject: 'body',
+                minify: {
+                    removeAttributeQuotes: true,
+                    collapseWhitespace: true,
+                    removeComments: true
+                }
             })
         ]
     },
@@ -55,7 +60,6 @@ const production = merge([
             })
         ]
     },
-    // minify.html(),
     minify.css({
         options: {
             discardComments: {
@@ -100,6 +104,5 @@ module.exports = (env) => {
     if (env === 'production' || env === 'prod') {
         return merge(common, production);
     }
-
     return merge(common, development);
 };
